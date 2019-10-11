@@ -1,51 +1,49 @@
+import { films } from './assets/films.js'
+import { people } from './assets/people.js'
+
 console.log('i am javaScript running in your page!')
 
-let main header = document.querySelector('h1')
+let mainArea = document.querySelector('main')
 
-console.log(mainHeader)
+films.forEach(function(film) {
+    let filmDiv = document.createElement('div');
+    let filmTitle = document.createElement('h1');
+    let filmCrawl = document.createElement('p');
 
-let allHeaders = document.queryselectorAll('h1')
+    filmTitle.textContent = film.title
+    filmCrawl.textContent = Film.opening_crawl
+    filmDiv.appendChild(filmTitle)
+    filmDiv.appendChild(filmCrawl)
 
-console.log(allHeaders)
+    mainArea.appendChild(filmDiv)
+});
 
-mainHeader.textContent = 'Austin is the Best!'
+people.forEach((person) => {
+    let personDiv = document.createElement('div');
+    let name = document.createElement('h1')
+    let gender = document.createElement('p')
 
-main header.setAttribute("style", "color:red; border:1px solid blue;")
+    pic.setAttribute('class', 'picDivs')
+    let getCharNum = getCharNumber(person.url)
 
-let newDiv = document.createElement("div");
+    name.textContent = person.name
+    gender.textContent = person.gender
 
-newDiv.textContent = "Here I am! A new Div"
+    pic.src = 'http://starwars-visualguide.com/assets/img/characters/${charNum}.jpg'
 
-document.body.appendChild(newDiv)
+    personDiv.appendChild(name)
+    personDiv.appendChild(gender)
+    personDiv.appendChild(pic)
 
-document.querySelector('main').setAttribute("style", "background-color:#dfdfdf;")
+    mainArea.appendChild(personDiv)
+});
 
-document.querySelector('main').appendChild(newDiv)
-
-
-//for main javascript file.
-
-//import things from a different server. 
-//remove these so that it can be put in its right place!!!   
-
-import { films } from 'assets/fims.js'
-
-console.log(films[0].opening_crawl)
-
-let mainSection = document.querySelector('main')
-
-let film1 = document.createElement('div')
-let film2 = document.createElement('div')
-let film3 = document.createElement('div')
-let film4 = document.createElement('div')
-let film5 = document.createElement('div')
-let film6 = document.createElement('div')
-let film7 = document.createElement('div')
-
-Film1.textContent = Film[0].opening_crawl
-Film2.textContent = Film[1].opening_crawl
-Film3.textContent = Film[2].opening_crawl
-Film4.textContent = Film[3].opening_crawl
-Film5.textContent = Film[4].opening_crawl
-Film6.textContent = Film[5].opening_crawl
-Film7.textContent = Film[6].opening_crawl
+function getCharNumber(charURL) {
+    let end = CharURL.lastIndexOf('/')
+    let CharID = CharURL.substring(end - 2, end)
+    if (CharID.indexOf('/') !== -1) {
+        return CharID.slice(1, 2)
+    } else {
+        return CharID
+    }
+}
